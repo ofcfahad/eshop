@@ -13,7 +13,7 @@ export default function Settings() {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="inline-flex w-full justify-center shadow-sm focus:outline-none">
+                <Menu.Button className="inline-flex w-full justify-center focus:outline-none">
                     <div>
                         <IconContext.Provider value={{ color: 'black', size: 20 }}>
                             <CiSettings />
