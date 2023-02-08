@@ -26,7 +26,7 @@ const Cart = () => {
             <div>
             </div>
           </div>
-          <div className='text-center mt-[50px] text-md justify-around items-center font-bold'>
+          <div className='text-center mt-[50px] text-sm justify-around items-center font-semibold'>
             It's always gonna be Empty Right?
           </div>
         </div>
