@@ -32,7 +32,7 @@ export default function Settings() {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="absolute right-2 z-10 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className='w-full flex justify-around items-center'>
+                    <div className='w-full flex justify-center items-center'>
                         <div>
                             <IconContext.Provider value={{ color: 'black', size: 20 }}>
                                 <CiSettings />
