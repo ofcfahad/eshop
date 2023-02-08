@@ -1,0 +1,104 @@
+<nav className='h-[90px] w-full bg-secondary border-b border-black border-opacity-10'>
+    {/* UPPERS */}
+    <div className='justify-between items-center'>
+        {/* CATEGORY */}
+        <button className='' onMouseOver={()=> setishovered(true)} onMouseLeave={() => setishovered(false)}>
+            {ishovered ? nHiOutlineBars3CenterLeft : nHiOutlineBars3}
+        </button>
+        {/* LOGO */}
+        <div className=''>
+            <img src={logo} alt="logo" className='h-[70px] mm:ml-4 float-right' />
+        </div>
+    </div>
+    <div className='mt-[-10px]'>
+        {/* SEARCHBAR */}
+        <div className='h-[35px] w-[600px] mt-[48px] ml-[-50px]  mm:w-[600px] mm:mt-4 mm:ml-5 transition-transform'>
+            <SearchBar />
+        </div>
+        {/* OTHERS */}
+        <div className='float-right flex items-center mt-[-52px]'>
+            {/* LOGINBUTTON */}
+            <button
+                className='flex w-auto h-[28px] justify-center items-center px-2 rounded-lg border border-black border-opacity-5 shadow-md hover:mr-[-2px] hover:border-opacity-10 hover:shadow-lg'>
+                {/* ICON */}
+                <div className=''>
+                    <IconContext.Provider value={{ color: 'black' , size: 20 }}>
+                        <CiLogin />
+                    </IconContext.Provider>
+                </div>
+                {/* TEXT */}
+                <div className='hidden mm:flex ml-2 text-[8px] text-gray-700 font-semibold' onClick={()=>
+                    console.log('It is not gonna work is it?')}>
+                    LOGIN | SIGNUP
+                </div>
+            </button>
+            {/* DIVIDER */}
+            <div className=''>
+                <IconContext.Provider value={{ color: "gray" , size: 30 }}>
+                    <RxDividerVertical />
+                </IconContext.Provider>
+            </div>
+            {/* CART */}
+            <button className='mr-2' onClick={()=> console.log("Cart is Under Devlopment")}>
+                <Cart />
+            </button>
+        </div>
+        {/* LOWERS */}
+        {/* OFFER NAVS */}
+        <div className='flex ml-4'>
+
+            {/* DIVIDER */}
+            <div className='hidden mm:flex'>
+                <IconContext.Provider value={{ color: "gray" , size: 25 }}>
+                    <RxDividerVertical />
+                </IconContext.Provider>
+            </div>
+            {/* OFFERS AND DISCOUNTS */}
+            <button className='hidden mm:flex justify-center items-center'>
+                <div className=''>
+                    <IconContext.Provider value={{ color: 'black' , size: 18 }}>
+                        <CiDiscount1 />
+                    </IconContext.Provider>
+                </div>
+                {/* TEXT */}
+                <div className='flex mm:flex text-sm ml-1'>
+                    Offers n Discounts
+                </div>
+            </button>
+            {/* BEST-SELLING */}
+            <button className='hidden mm:flex justify-center items-center ml-2'>
+                <div className=''>
+                    <IconContext.Provider value={{ color: 'black' , size: 18 }}>
+                        <AiOutlineFire />
+                    </IconContext.Provider>
+                </div>
+                {/* TEXT */}
+                <div className='flex text-sm ml-0.5'>
+                    Top Selling
+                </div>
+            </button>
+        </div>
+        {/* SETTINGS */}
+        <div className='hidden mm:flex float-right mt-[-22px] mr-4'>
+            {/* LANGUAGE */}
+            <button className='flex justify-center items-center'>
+                <div className='mr-0.5 text-xs font-semibold'>
+                    Eng
+                </div>
+                <div className=''>
+                    <IconContext.Provider value={{ color: 'black' , size: 18 }}>
+                        <IoLanguageOutline />
+                    </IconContext.Provider>
+                </div>
+            </button>
+            {/* THEME */}
+            <button className='flex justify-center items-center ml-4'>
+                <div className=''>
+                    <IconContext.Provider value={{ color: 'black' , size: 18 }}>
+                        <CiDark />
+                    </IconContext.Provider>
+                </div>
+            </button>
+        </div>
+    </div>
+</nav>
