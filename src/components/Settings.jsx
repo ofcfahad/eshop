@@ -43,7 +43,7 @@ export default function Settings() {
                         </div>
                     </div>
                     <div className="flex ml-3 text-sm">
-                        Language
+                        i am working on it or am i?
                     </div>
 
                 </Menu.Items>
