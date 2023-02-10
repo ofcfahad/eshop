@@ -39,8 +39,8 @@ const ScrolledLNavbar = () => {
                 {/* LOGO */}
                 <img src={logo} alt="logo" className='h-[70px] ml-4' />
                 {/* SEARCHBAR */}
-                <div className='h-full mt-4 items-center justify-center' onFocus={() => setisextended(true)} onBlur={() => setisextended(false)}>
-                    {isextended ? <div className='h-[35px] w-[500px] ml-5 transition-transform'>
+                <div className='h-full mt-4 ml-4 items-center justify-center' onFocus={() => setisextended(true)} onBlur={() => setisextended(false)}>
+                    {isextended ? <div className='h-[35px] w-[500px] transition-transform'>
                         <SearchBar />
                     </div> : <SearchBar
                         type={'SearchButton'}
