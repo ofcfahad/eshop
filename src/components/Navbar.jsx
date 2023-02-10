@@ -1,15 +1,25 @@
 import React from 'react'
 import SNavbar from './SNavbar'
 import LNavbar from './LNavbar'
+import ScrolledLNavbar from './ScrolledLNavbar'
 
 const Navbar = () => {
-    const [width, setWidth] = React.useState(window.innerWidth);
-    const breakpoint = 950;
+    const [width, setWidth] = React.useState(window.innerWidth)
+    const [scrollPosition, setScrollPosition] = React.useState(0)
+
+    const breakpoint = 950
 
     React.useEffect(() => {
-        window.addEventListener("resize", () => setWidth(window.innerWidth));
+        window.addEventListener('resize', () => setWidth(window.innerWidth));
+        window.addEventListener('scroll', () => setScrollPosition(window.scrollY));
+
+        return () => {
+            window.removeEventListener('resize', () => setWidth(window.innerWidth));
+            window.removeEventListener('scroll', () => setScrollPosition(window.scrollY));
+        };
     }, []);
-    return width < breakpoint ? <SNavbar /> : <LNavbar />;
+
+    return width < breakpoint ? <SNavbar /> : scrollPosition === 0 ? <LNavbar /> : <ScrolledLNavbar />;
 }
 
 export default Navbar
