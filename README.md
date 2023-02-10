@@ -1,1 +1,1 @@
-A copy of zishop.vercel.app i guess?
+A copy of [Zishop](https://zishop.vercel.app/) i guess?
