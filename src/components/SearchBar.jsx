@@ -5,7 +5,10 @@ import { BiSearchAlt2 } from 'react-icons/bi'
 import { RxCrossCircled } from 'react-icons/rx'
 
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+
+  const type = props.type
+
   const [inputValue, setInputValue] = useState('');
   const [isShown, setIsShown] = useState(false);
 
@@ -22,27 +25,38 @@ const SearchBar = () => {
     setInputValue('');
     setIsShown(false);
   };
-  return (
-    <div className='h-full w-full bg-black bg-opacity-10 flex items-center rounded-md'>
+
+  const SearchButton = (<button className='h-auto w-auto mt-4 ml-4 px-2 py-2 bg-black bg-opacity-10 flex justify-center items-center rounded-md transition-all ease-linear delay-100'>
+    <div className=''>
+      <IconContext.Provider value={{ color: "gray", size: 20 }}>
+        <BiSearchAlt2 />
+      </IconContext.Provider>
+    </div>
+  </button>);
+
+  const Searchbar = (
+    <div className='h-full w-full bg-black bg-opacity-10 flex items-center rounded-md' >
       {/* SearchIcon */}
-      <div className='ml-4'>
+      <div div className='ml-4' >
         <IconContext.Provider value={{ color: "gray", size: 20 }}>
           <BiSearchAlt2 />
         </IconContext.Provider>
-      </div>
-      <div className='w-[90%] flex ml-2' onFocus={() => setIsShown(true)} onBlur={() => { if (inputValue === '') { setIsShown(false); } }} >
+      </div >
+      <div className='w-[90%] flex ml-2 items-center' onFocus={() => setIsShown(true)} onBlur={() => { inputValue === '' ? setIsShown(false) : setIsShown(true) }} >
         {/* SearchInput */}
         <input type="text" value={inputValue} placeholder="Search" className="w-[94%] text-xl text-gray-600 bg-transparent focus:outline-none" onChange={handleUserInput} />
         {isShown && (
-          <div className="w-8 h-8 rounded-3xl flex" onClick={resetInputField}>
+          <div className="w-8 h-8 mt-1 rounded-3xl flex" onClick={resetInputField}>
             <IconContext.Provider value={{ color: 'gray', size: 25 }}>
               <RxCrossCircled />
             </IconContext.Provider>
           </div>
         )}
       </div>
-    </div>
+    </div >
   )
+
+  return type === 'SearchButton' ? SearchButton : Searchbar
 }
 
 export default SearchBar
