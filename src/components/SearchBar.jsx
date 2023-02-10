@@ -26,7 +26,7 @@ const SearchBar = (props) => {
     setIsShown(false);
   };
 
-  const SearchButton = (<button className='h-auto w-auto mt-4 ml-4 px-2 py-2 bg-black bg-opacity-10 flex justify-center items-center rounded-md transition-all ease-linear delay-100'>
+  const SearchButton = (<button className='h-auto w-auto px-2 py-2 bg-black bg-opacity-10 flex justify-center items-center rounded-md transition-all ease-linear delay-100'>
     <div className=''>
       <IconContext.Provider value={{ color: "gray", size: 20 }}>
         <BiSearchAlt2 />
