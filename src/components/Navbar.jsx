@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import SNavbar from './SNavbar'
 import LNavbar from './LNavbar'
 import ScrolledLNavbar from './ScrolledLNavbar'
@@ -22,6 +23,7 @@ const Navbar = (props) => {
     return width < breakpoint ? <SNavbar
         theme={props.theme}
         toggleTheme={props.toggleTheme}
+        setTheme={props.setTheme}
     /> : scrollPosition === 0 ? <LNavbar
         theme={props.theme}
         toggleTheme={props.toggleTheme}
