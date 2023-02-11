@@ -14,7 +14,7 @@ import Cart from './Cart';
 
 const xNavbar = (props) => {
 
-    const [isDark, setisDark] = useState(false)
+    const [isDark, setisDark] = useState(props.theme === 'bg-primary' ? false : true)
 
     const toggleDark = () => {
         props.theme === 'bg-primary' ? setisDark(true) + props.toggleTheme() : setisDark(false) + props.toggleTheme()
