@@ -42,13 +42,15 @@ const xNavbar = (props) => {
                 <img src={logo} alt="logo" className='h-[70px] ml-4' />
                 {/* SEARCHBAR */}
                 <div className='h-[35px] w-[600px] mt-4 ml-5 transition-transform'>
-                    <SearchBar />
+                    <SearchBar
+                        isDark={isDark}
+                    />
                 </div>
             </div>
             {/* OTHERS */}
             <div className='float-right flex items-center mt-[-52px]'>
                 {/* LOGINBUTTON */}
-                <button className='flex w-auto h-[28px] justify-center items-center px-2 rounded-lg border border-black border-opacity-5 shadow-md hover:mr-[-2px] hover:border-opacity-10 hover:shadow-lg'>
+                <button className={`flex w-auto h-[28px] justify-center items-center px-2 rounded-lg border ${isDark ? `border-white` : `border-black`} border-opacity-5 shadow-md hover:mr-[-2px] hover:border-opacity-10 hover:shadow-lg`}>
                     {/* ICON */}
                     <div className=''>
                         <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 20 }}>
@@ -68,7 +70,9 @@ const xNavbar = (props) => {
                 </div>
                 {/* CART */}
                 <button className='mr-2' onClick={() => console.log("Cart is Under Devlopment")}>
-                    <Cart />
+                    <Cart
+                        isDark={isDark}
+                    />
                 </button>
             </div>
             {/* LOWERS */}
@@ -118,7 +122,7 @@ const xNavbar = (props) => {
                 <div className='flex float-right mt-[-22px] mr-4'>
                     {/* LANGUAGE */}
                     <button className='flex justify-center items-center'>
-                        <div className='mr-0.5 text-xs font-semibold'>
+                        <div className={`mr-0.5 ${isDark ? `text-white` : `text-gray-600`} text-xs font-semibold`}>
                             Eng
                         </div>
                         <div className=''>
@@ -129,18 +133,18 @@ const xNavbar = (props) => {
                     </button>
                     {/* THEME */}
                     <button className='flex justify-center items-center ml-4' onClick={toggleDark}>
-                        { isDark ? 
-                        <div className=''>
-                            <IconContext.Provider value={{ color: 'white', size: 18 }}>
-                                <BsSun />
-                            </IconContext.Provider>
-                        </div>
-                        :
-                        <div className=''>
-                            <IconContext.Provider value={{ color: 'black', size: 18 }}>
-                                <CiDark />
-                            </IconContext.Provider>
-                        </div>
+                        {isDark ?
+                            <div className=''>
+                                <IconContext.Provider value={{ color: 'white', size: 18 }}>
+                                    <BsSun />
+                                </IconContext.Provider>
+                            </div>
+                            :
+                            <div className=''>
+                                <IconContext.Provider value={{ color: 'black', size: 18 }}>
+                                    <CiDark />
+                                </IconContext.Provider>
+                            </div>
                         }
                     </button>
                 </div>
