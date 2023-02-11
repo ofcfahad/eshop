@@ -35,11 +35,17 @@ const ScrolledLNavbar = (props) => {
         <nav className={`w-full fixed ${theme} h-[50px] items-center border-b border-black border-opacity-10 transition-all ease-in delay-100`}>
             <div className='flex mt-[-10px]'>
                 {/* CATEGORY */}
-                <button className='h-auto ml-[15px]' onMouseOver={() => setishovered(true)} onMouseLeave={() => setishovered(false)}>
+                <button className='h-auto ml-[15px] mb-[5px]' onMouseOver={() => setishovered(true)} onMouseLeave={() => setishovered(false)}>
                     {ishovered ? nHiOutlineBars3CenterLeft : nHiOutlineBars3}
                 </button>
+                {/* DIVIDER */}
+                <div className='mt-[18px]'>
+                    <IconContext.Provider value={{ color: theme === 'bg-secondary' ? 'white' : 'gray', size: 30 }}>
+                        <RxDividerVertical />
+                    </IconContext.Provider>
+                </div>
                 {/* LOGO */}
-                <img src={logo} alt="logo" className='h-[70px] ml-4' />
+                <img src={logo} alt="logo" className='h-[70px]' />
                 {/* SEARCHBAR */}
                 <div className='h-full mt-4 ml-4 items-center justify-center' onFocus={() => setisextended(true)} onBlur={() => setisextended(false)}>
                     {isextended ? <div className='h-[35px] w-[500px] transition-transform'>
@@ -62,24 +68,14 @@ const ScrolledLNavbar = (props) => {
                 </button>
                 {/* DIVIDER */}
                 <div className=''>
-                    <IconContext.Provider value={{ color: theme === 'bg-secondary' ? 'white' : 'gray', size: 30 }}>
+                    <IconContext.Provider value={{ color: theme === 'bg-secondary' ? 'white' : 'gray', size: 25 }}>
                         <RxDividerVertical />
                     </IconContext.Provider>
                 </div>
                 {/* CART */}
-                <button className='mr-[-10px]' onClick={() => console.log("Cart is Under Devlopment")}>
+                <button className='' onClick={() => console.log("Cart is Under Devlopment")}>
                     <Cart />
                 </button>
-                {/* DIVIDER */}
-                <div className=''>
-                    <IconContext.Provider value={{ color: theme === 'bg-secondary' ? 'white' : 'gray', size: 20 }}>
-                        <RxDividerVertical />
-                    </IconContext.Provider>
-                </div>
-                {/* SETTINGS */}
-                <div className='mr-[15px] mt-[3px]'>
-                    <Settings />
-                </div>
             </div>
         </nav>
     )
