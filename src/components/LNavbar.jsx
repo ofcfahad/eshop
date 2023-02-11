@@ -12,25 +12,31 @@ import { BsSun } from 'react-icons/bs'
 import { IoLanguageOutline } from 'react-icons/io5'
 import Cart from './Cart';
 
-const xNavbar = () => {
+const xNavbar = (props) => {
+
+    const [isDark, setisDark] = useState(false)
+
+    const toggleDark = () => {
+        props.theme === 'bg-primary' ? setisDark(true) + props.toggleTheme() : setisDark(false) + props.toggleTheme()
+    }
 
     const [ishovered, setishovered] = useState(false);
 
     const nHiOutlineBars3 = (<div className=''>
-        <IconContext.Provider value={{ color: 'black', size: 18 }}>
+        <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 18 }}>
             <HiOutlineBars3 />
         </IconContext.Provider>
     </div>)
 
     const nHiOutlineBars3CenterLeft = (<div className=''>
-        <IconContext.Provider value={{ color: 'black', size: 18 }}>
+        <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 18 }}>
             <HiOutlineBars3CenterLeft />
         </IconContext.Provider>
     </div>)
 
 
     return (
-        <nav className='h-[90px] w-full bg-primary border-b border-black border-opacity-10'>
+        <nav className={`h-[90px] w-full ${props.theme} border-b border-black border-opacity-10 transition-all ease-linear delay-100`}>
             <div className='flex'>
                 {/* LOGO */}
                 <img src={logo} alt="logo" className='h-[70px] ml-4' />
@@ -45,18 +51,18 @@ const xNavbar = () => {
                 <button className='flex w-auto h-[28px] justify-center items-center px-2 rounded-lg border border-black border-opacity-5 shadow-md hover:mr-[-2px] hover:border-opacity-10 hover:shadow-lg'>
                     {/* ICON */}
                     <div className=''>
-                        <IconContext.Provider value={{ color: 'black', size: 20 }}>
+                        <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 20 }}>
                             <CiLogin />
                         </IconContext.Provider>
                     </div>
                     {/* TEXT */}
-                    <div className='flex ml-2 text-[8px] text-gray-700 font-semibold' onClick={() => console.log('It is not gonna work is it?')}>
+                    <div className={`flex ml-2 text-[8px] ${isDark ? `text-white` : `text-gray-700`} font-semibold`} onClick={() => console.log('It is not gonna work is it?')}>
                         LOGIN | SIGNUP
                     </div>
                 </button>
                 {/* DIVIDER */}
                 <div className=''>
-                    <IconContext.Provider value={{ color: "gray", size: 30 }}>
+                    <IconContext.Provider value={{ color: isDark ? 'white' : 'gray', size: 30 }}>
                         <RxDividerVertical />
                     </IconContext.Provider>
                 </div>
@@ -68,25 +74,25 @@ const xNavbar = () => {
             {/* LOWERS */}
             <div className='mt-[-10px]'>
                 {/* OFFER NAVS */}
-                <div className='flex ml-4'>
+                <div className={`flex ml-4 ${isDark ? `text-white` : `text-gray-700`}`}>
                     {/* CATEGORY */}
                     <button className='flex justify-center items-center' onMouseOver={() => setishovered(true)} onMouseLeave={() => setishovered(false)}>
                         {ishovered ? nHiOutlineBars3CenterLeft : nHiOutlineBars3}
                         {/* TEXT */}
-                        <div className='flex text-sm font-semibold ml-2'>
+                        <div className={`flex text-sm font-semibold ml-2`}>
                             Category
                         </div>
                     </button>
                     {/* DIVIDER */}
                     <div className='flex'>
-                        <IconContext.Provider value={{ color: "gray", size: 25 }}>
+                        <IconContext.Provider value={{ color: isDark ? 'white' : 'gray', size: 25 }}>
                             <RxDividerVertical />
                         </IconContext.Provider>
                     </div>
                     {/* OFFERS AND DISCOUNTS */}
                     <button className='flex justify-center items-center'>
                         <div className=''>
-                            <IconContext.Provider value={{ color: 'black', size: 18 }}>
+                            <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 18 }}>
                                 <CiDiscount1 />
                             </IconContext.Provider>
                         </div>
@@ -98,7 +104,7 @@ const xNavbar = () => {
                     {/* BEST-SELLING */}
                     <button className='flex justify-center items-center ml-2'>
                         <div className=''>
-                            <IconContext.Provider value={{ color: 'black', size: 18 }}>
+                            <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 18 }}>
                                 <AiOutlineFire />
                             </IconContext.Provider>
                         </div>
@@ -116,18 +122,26 @@ const xNavbar = () => {
                             Eng
                         </div>
                         <div className=''>
-                            <IconContext.Provider value={{ color: 'black', size: 18 }}>
+                            <IconContext.Provider value={{ color: isDark ? 'white' : 'black', size: 18 }}>
                                 <IoLanguageOutline />
                             </IconContext.Provider>
                         </div>
                     </button>
                     {/* THEME */}
-                    <button className='flex justify-center items-center ml-4'>
+                    <button className='flex justify-center items-center ml-4' onClick={toggleDark}>
+                        { isDark ? 
+                        <div className=''>
+                            <IconContext.Provider value={{ color: 'white', size: 18 }}>
+                                <BsSun />
+                            </IconContext.Provider>
+                        </div>
+                        :
                         <div className=''>
                             <IconContext.Provider value={{ color: 'black', size: 18 }}>
                                 <CiDark />
                             </IconContext.Provider>
                         </div>
+                        }
                     </button>
                 </div>
             </div>
