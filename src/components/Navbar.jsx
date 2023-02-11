@@ -3,7 +3,7 @@ import SNavbar from './SNavbar'
 import LNavbar from './LNavbar'
 import ScrolledLNavbar from './ScrolledLNavbar'
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [width, setWidth] = React.useState(window.innerWidth)
     const [scrollPosition, setScrollPosition] = React.useState(0)
 
@@ -19,7 +19,15 @@ const Navbar = () => {
         };
     }, []);
 
-    return width < breakpoint ? <SNavbar /> : scrollPosition === 0 ? <LNavbar /> : <ScrolledLNavbar />;
+    return width < breakpoint ? <SNavbar
+        theme={props.theme}
+        toggleTheme={props.toggleTheme}
+    /> : scrollPosition === 0 ? <LNavbar
+        theme={props.theme}
+        toggleTheme={props.toggleTheme}
+    /> : <ScrolledLNavbar
+        theme={props.theme}
+    />;
 }
 
 export default Navbar
