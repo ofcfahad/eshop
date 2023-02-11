@@ -26,19 +26,19 @@ const SearchBar = (props) => {
     setIsShown(false);
   };
 
-  const SearchButton = (<button className='h-auto w-auto px-2 py-2 bg-black bg-opacity-10 flex justify-center items-center rounded-md transition-all ease-linear delay-100'>
+  const SearchButton = (<button className={`h-full w-full px-2 py-2 ${props.isDark || props.theme === 'bg-secondary' ? 'bg-white' : `bg-black`} bg-opacity-10 flex justify-center items-center rounded-md transition-all ease-linear delay-100`}>
     <div className=''>
-      <IconContext.Provider value={{ color: "gray", size: 20 }}>
+      <IconContext.Provider value={{ color: props.isDark || props.theme === 'bg-secondary' ? 'white' : "gray", size: 20 }}>
         <BiSearchAlt2 />
       </IconContext.Provider>
     </div>
   </button>);
 
   const Searchbar = (
-    <div className='h-full w-full bg-black bg-opacity-10 flex items-center rounded-md' >
+    <div className={`h-full w-full ${props.isDark || props.theme === 'bg-secondary' ? 'bg-white' : `bg-black`} bg-opacity-10 flex items-center rounded-md`}>
       {/* SearchIcon */}
       <div div className='ml-4' >
-        <IconContext.Provider value={{ color: "gray", size: 20 }}>
+        <IconContext.Provider value={{ color: props.isDark || props.theme === 'bg-secondary' ? 'white' : "gray", size: 20 }}>
           <BiSearchAlt2 />
         </IconContext.Provider>
       </div >
@@ -47,7 +47,7 @@ const SearchBar = (props) => {
         <input type="text" value={inputValue} placeholder="Search" className="w-[94%] text-xl text-gray-600 bg-transparent focus:outline-none" onChange={handleUserInput} />
         {isShown && (
           <div className="w-8 h-8 mt-1 rounded-3xl flex" onClick={resetInputField}>
-            <IconContext.Provider value={{ color: 'gray', size: 25 }}>
+            <IconContext.Provider value={{ color: props.isDark || props.theme === 'bg-secondary' ? 'white' : 'gray', size: 25 }}>
               <RxCrossCircled />
             </IconContext.Provider>
           </div>
