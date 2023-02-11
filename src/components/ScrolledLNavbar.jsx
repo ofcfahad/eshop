@@ -16,6 +16,15 @@ const ScrolledLNavbar = (props) => {
 
     const [ishovered, setishovered] = useState(false)
     const [isextended, setisextended] = useState(false)
+    const [scrollPosition, setScrollPosition] = React.useState(0)
+
+    React.useEffect(() => {
+        window.addEventListener('scroll', () => setScrollPosition(window.scrollY));
+
+        return () => {
+            window.removeEventListener('scroll', () => setScrollPosition(window.scrollY));
+        };
+    }, []);
 
     const [showDiv, setShowDiv] = useState(true);
 
@@ -33,13 +42,13 @@ const ScrolledLNavbar = (props) => {
 
     return (
         <nav className={`w-full fixed ${theme} h-[50px] items-center border-b border-black border-opacity-10 transition-all ease-in delay-100`}>
-            <div className='flex mt-[-10px]'>
+            <div className='flex mt-[-10px] items-center'>
                 {/* CATEGORY */}
-                <button className='h-auto ml-[15px] mb-[5px]' onMouseOver={() => setishovered(true)} onMouseLeave={() => setishovered(false)}>
+                <button className='h-auto ml-[15px]' onMouseOver={() => setishovered(true)} onMouseLeave={() => setishovered(false)}>
                     {ishovered ? nHiOutlineBars3CenterLeft : nHiOutlineBars3}
                 </button>
                 {/* DIVIDER */}
-                <div className='mt-[18px]'>
+                <div className=''>
                     <IconContext.Provider value={{ color: theme === 'bg-secondary' ? 'white' : 'gray', size: 30 }}>
                         <RxDividerVertical />
                     </IconContext.Provider>
@@ -47,12 +56,16 @@ const ScrolledLNavbar = (props) => {
                 {/* LOGO */}
                 <img src={logo} alt="logo" className='h-[70px]' />
                 {/* SEARCHBAR */}
-                <div className='h-full mt-4 ml-4 items-center justify-center' onFocus={() => setisextended(true)} onBlur={() => setisextended(false)}>
-                    {isextended ? <div className='h-[35px] w-[500px] transition-transform'>
-                        <SearchBar />
-                    </div> : <SearchBar
+                <div className='h-full ml-4 items-center justify-center' onFocus={() => setisextended(true)} onBlur={() => setisextended(false)}>
+                    {isextended || scrollPosition <= 100 ? <div className='h-[35px] w-[500px] transition-transform ease-in-out delay-1000'>
+                        <SearchBar
+                            theme={props.theme}
+                        />
+                    </div> : <div className='h-[35px] w-auto transition-transform ease-in-out delay-1000'> <SearchBar
+                        theme={props.theme}
                         type={'SearchButton'}
                     />
+                    </div>
                     }
                 </div>
             </div>
@@ -74,7 +87,9 @@ const ScrolledLNavbar = (props) => {
                 </div>
                 {/* CART */}
                 <button className='' onClick={() => console.log("Cart is Under Devlopment")}>
-                    <Cart />
+                    <Cart
+                        theme={props.theme}
+                    />
                 </button>
             </div>
         </nav>
