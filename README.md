@@ -1,1 +1,1 @@
-A copy of [Zishop](https://zishop.vercel.app/) i guess?
+Live here [eshop](https://fahadseshop.netlify.app/)
